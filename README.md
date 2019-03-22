@@ -1,4 +1,4 @@
-# p3e-library
+# @fluidnext-library
 
 Contain the sequent module:
 
