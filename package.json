@@ -1,7 +1,7 @@
 {
-  "name": "@p3e/library",
+  "name": "@fluidnext/library",
   "version": "0.1.0",
-  "description": "P3e library",
+  "description": "library",
   "main": "index.js",
   "devDependencies": {
     "@types/chai": "^4.1.7",
@@ -21,14 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/visa4/p3e-library.git"
+    "url": "git+https://github.com/fluidnext/library.git"
   },
   "author": "antonino.visalli@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/visa4/p3e-library/issues"
+    "url": "https://github.com/fluidnext/library/issues"
   },
-  "homepage": "https://github.com/visa4/p3e-library#readme",
+  "homepage": "https://github.com/fluidnext/library#readme",
   "dependencies": {
     "@types/node": "^11.11.3"
   },
