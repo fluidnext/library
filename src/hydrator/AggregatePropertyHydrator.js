@@ -145,3 +145,4 @@ export class AggregatePropertyHydrator extends AbstractHydrator {
         return hydrator.hydrate(data, object);
     }
 }
+//# sourceMappingURL=AggregatePropertyHydrator.js.map

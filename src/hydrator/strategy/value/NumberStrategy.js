@@ -37,3 +37,4 @@ export class NumberStrategy {
         return extract;
     }
 }
+//# sourceMappingURL=NumberStrategy.js.map

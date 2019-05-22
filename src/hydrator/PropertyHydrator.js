@@ -51,3 +51,4 @@ export class PropertyHydrator extends AbstractHydrator {
         return object;
     }
 }
+//# sourceMappingURL=PropertyHydrator.js.map
