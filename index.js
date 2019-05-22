@@ -16,6 +16,18 @@ module.exports = {
         EventManager: require('./commonjs/event/EventManager').EventManager,
         Listener: require('./commonjs/event/Listener').Listener
     },
+    hydrator : {
+        AbstractHydrator: require('./commonjs/hydrator/AbstractHydrator').AbstractHydrator,
+        PropertyHydrator: require('./commonjs/hydrator/PropertyHydrator').PropertyHydrator,
+        AggregatePropertyHydrator: require('./commonjs/hydrator/AggregatePropertyHydrator').AggregatePropertyHydrator,
+        strategy : {
+            value : {
+                HydratorStrategy : require('./commonjs/hydrator/strategy/value/HydratorStrategy').HydratorStrategy,
+                HybridStrategy : require('./commonjs/hydrator/strategy/value/HybridStrategy').HybridStrategy,
+                NumberStrategy : require('./commonjs/hydrator/strategy/value/NumberStrategy').NumberStrategy,
+            }
+        }
+    },
     localize : {
         Localize : require('./commonjs/localize/Localize').Localize
     }
