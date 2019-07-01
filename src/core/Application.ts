@@ -56,8 +56,9 @@ export class Application implements EventManagerAwareInterface {
     public async loadModules(modules:Array<Module>, container:ContainerInterface) {
 
         for (let cont = 0; modules.length > cont; cont++) {
-           this.modules.push(await this._loadModule(modules[cont], container));
+            this.modules.push(await this._loadModule(modules[cont], container));
         }
+
         this.getEventManager().emit(Application.BOOTSTRAP_MODULE, this.modules);
         return this.modules;
     }
@@ -80,23 +81,21 @@ export class Application implements EventManagerAwareInterface {
         let configModuleClass;
         let autoloadRequire;
         let wcEntryPoint;
-        let wcComponent;
+        let wcComponentPath;
 
         console.groupCollapsed(`Load Module ${module.getName()}`);
         /**
          * Load entry point module
          */
-        if (module.getWebComponentEntryPointName() && customElements && customElements.get(module.getWebComponentEntryPointName()) === undefined) {
+        if (customElements && customElements.get(module.getEntryPoint().getName()) === undefined) {
 
-            wcEntryPoint = `${modulePath}${module.getName()}${this.getSlash()}${module.getWebComponentEntryPointNameFile()}`;
-            await import(wcEntryPoint)
-                .then((moduleLoaded) => {
-                    console.log(`Load entry point module "${module.getWebComponentEntryPointName()}" store in ${wcEntryPoint}`);
-
-                })
-                .catch((err) => {
-                    console.error(`Failed to load entry point module store in ${wcEntryPoint}`);
-                });
+            wcEntryPoint = `${modulePath}${module.getName()}${this.getSlash()}${module.getEntryPoint().getPath().getPath()}`;
+            try {
+                await import(wcEntryPoint);
+                console.log(`Load entry point module "${module.getEntryPoint().getName()}" store in ${wcEntryPoint}`, module);
+            } catch (err) {
+                console.error(`Failed to load entry point module store in ${wcEntryPoint}`, err);
+            }
         }
 
         if (module.getAutoloads().length > 0) {
@@ -112,15 +111,15 @@ export class Application implements EventManagerAwareInterface {
 
             for (let cont = 0; module.getAutoloadsWs().length > cont; cont++) {
 
-                wcComponent = `${modulePath}${module.getName()}${this.getSlash()}${this.path.normalize(module.getAutoloadsWs()[cont])}`;
-                await import(wcComponent)
-                    .then((moduleLoaded) => {
-                        console.log(`Load web component store in "${wcComponent}"`);
-
-                    })
-                    .catch((err) => {
-                        console.error(`Failed to load autoloads store in ${wcComponent}`);
-                    });
+                if (customElements.get(module.getAutoloadsWs()[cont].getName()) === undefined) {
+                    wcComponentPath = `${modulePath}${module.getName()}${this.getSlash()}${this.path.normalize(module.getAutoloadsWs()[cont].getPath().getPath())}`;
+                    try {
+                        let wcComponent = await import(wcComponentPath);
+                        console.log(`Load web component store in  "${module.getAutoloadsWs()[cont].getPath().getPath()}" store in ${module.getAutoloadsWs()[cont].getName()}`, wcComponent);
+                    } catch (err) {
+                        console.error(`Failed to load autoloads store in ${module.getAutoloadsWs()[cont].getPath().getPath()}`, err);
+                    }
+                }
             }
         }
 

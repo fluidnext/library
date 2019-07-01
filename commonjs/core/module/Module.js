@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  *  Module
  */
+const webcomponent_1 = require("../webcomponent");
 class Module {
     constructor() {
         /**
@@ -18,13 +19,10 @@ class Module {
          */
         this.name = '';
         /**
-         * @type string
+         *
+         * @type {WebComponent}
          */
-        this.webComponentEntryPointName = '';
-        /**
-         * @type {string}
-         */
-        this.webComponentEntryPointNameFile = '';
+        this.entryPoint = new webcomponent_1.WebComponent();
         /**
          * @type {string}
          */
@@ -87,34 +85,6 @@ class Module {
     /**
      * @return {string}
      */
-    getWebComponentEntryPointName() {
-        return this.webComponentEntryPointName;
-    }
-    /**
-     * @param {string} webComponentEntryPointName
-     * @return {Module}
-     */
-    setWebComponentEntryPointName(webComponentEntryPointName) {
-        this.webComponentEntryPointName = webComponentEntryPointName;
-        return this;
-    }
-    /**
-     * @return {string}
-     */
-    getWebComponentEntryPointNameFile() {
-        return this.webComponentEntryPointNameFile;
-    }
-    /**
-     * @param {string} webComponentEntryPointNameFile
-     * @return {Module}
-     */
-    setWebComponentEntryPointNameFile(webComponentEntryPointNameFile) {
-        this.webComponentEntryPointNameFile = webComponentEntryPointNameFile;
-        return this;
-    }
-    /**
-     * @return {string}
-     */
     getConfigEntryPoint() {
         return this.configEntryPoint;
     }
@@ -138,16 +108,30 @@ class Module {
         this.autoloads = autoloads;
     }
     /**
-     * @return {Array<string>}
+     * @return {Array<WebComponent>}
      */
     getAutoloadsWs() {
         return this.autoloadsWs;
     }
     /**
-     * @param {Array<string>} autoloadsWs
+     * @param {Array<WebComponent>} autoloadsWs
      */
     setAutoloadsWs(autoloadsWs) {
         this.autoloadsWs = autoloadsWs;
+    }
+    /**
+     * @return {WebComponent}
+     */
+    getEntryPoint() {
+        return this.entryPoint;
+    }
+    /**
+     * @param {WebComponent} entryPoint
+     * @return {this}
+     */
+    setEntryPoint(entryPoint) {
+        this.entryPoint = entryPoint;
+        return this;
     }
 }
 exports.Module = Module;

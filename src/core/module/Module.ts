@@ -1,6 +1,8 @@
 /**
  *  Module
  */
+import {WebComponent} from "../webcomponent";
+
 export class Module {
 
     /**
@@ -19,14 +21,10 @@ export class Module {
     private name: string = '';
 
     /**
-     * @type string
+     *
+     * @type {WebComponent}
      */
-    private webComponentEntryPointName: string = '';
-
-    /**
-     * @type {string}
-     */
-    private webComponentEntryPointNameFile: string = '';
+    private entryPoint: WebComponent = new WebComponent();
 
     /**
      * @type {string}
@@ -46,7 +44,7 @@ export class Module {
     /**
      * @type Array<string>
      */
-    private autoloadsWs: Array<string> = [];
+    private autoloadsWs: Array<WebComponent> = [];
 
     /**
      * @return {string}
@@ -99,38 +97,6 @@ export class Module {
     /**
      * @return {string}
      */
-    public getWebComponentEntryPointName() {
-        return this.webComponentEntryPointName;
-    }
-
-    /**
-     * @param {string} webComponentEntryPointName
-     * @return {Module}
-     */
-    public setWebComponentEntryPointName(webComponentEntryPointName: string) {
-        this.webComponentEntryPointName = webComponentEntryPointName;
-        return this;
-    }
-
-    /**
-     * @return {string}
-     */
-    public getWebComponentEntryPointNameFile() {
-        return this.webComponentEntryPointNameFile;
-    }
-
-    /**
-     * @param {string} webComponentEntryPointNameFile
-     * @return {Module}
-     */
-    public setWebComponentEntryPointNameFile(webComponentEntryPointNameFile: string) {
-        this.webComponentEntryPointNameFile = webComponentEntryPointNameFile;
-        return this;
-    }
-
-    /**
-     * @return {string}
-     */
     public getConfigEntryPoint() {
         return this.configEntryPoint;
     }
@@ -158,16 +124,32 @@ export class Module {
     }
 
     /**
-     * @return {Array<string>}
+     * @return {Array<WebComponent>}
      */
     public getAutoloadsWs() {
         return this.autoloadsWs;
     }
 
     /**
-     * @param {Array<string>} autoloadsWs
+     * @param {Array<WebComponent>} autoloadsWs
      */
-    public setAutoloadsWs(autoloadsWs: Array<string>) {
+    public setAutoloadsWs(autoloadsWs: Array<WebComponent>) {
         this.autoloadsWs = autoloadsWs;
+    }
+
+    /**
+     * @return {WebComponent}
+     */
+    public getEntryPoint() {
+        return this.entryPoint;
+    }
+
+    /**
+     * @param {WebComponent} entryPoint
+     * @return {this}
+     */
+    public setEntryPoint(entryPoint : WebComponent) {
+        this.entryPoint = entryPoint;
+        return this;
     }
 }
