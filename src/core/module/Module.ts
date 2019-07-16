@@ -44,7 +44,7 @@ export class Module {
     /**
      * @type Array<string>
      */
-    private autoloadsWs: Array<WebComponent> = [];
+    private autoloadsWc: Array<WebComponent> = [];
 
     /**
      * @return {string}
@@ -126,15 +126,15 @@ export class Module {
     /**
      * @return {Array<WebComponent>}
      */
-    public getAutoloadsWs() {
-        return this.autoloadsWs;
+    public getAutoloadsWc() {
+        return this.autoloadsWc;
     }
 
     /**
-     * @param {Array<WebComponent>} autoloadsWs
+     * @param {Array<WebComponent>} autoloadsWc
      */
-    public setAutoloadsWs(autoloadsWs: Array<WebComponent>) {
-        this.autoloadsWs = autoloadsWs;
+    public setAutoloadsWc(autoloadsWc: Array<WebComponent>) {
+        this.autoloadsWc = autoloadsWc;
     }
 
     /**

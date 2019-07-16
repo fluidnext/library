@@ -65,16 +65,16 @@ export class Application {
                 window[autoloadRequire.name] = autoloadRequire;
             }
         }
-        if (module.getAutoloadsWs().length > 0) {
-            for (let cont = 0; module.getAutoloadsWs().length > cont; cont++) {
-                if (customElements.get(module.getAutoloadsWs()[cont].getName()) === undefined) {
-                    wcComponentPath = `${modulePath}${module.getName()}${this.getSlash()}${this.path.normalize(module.getAutoloadsWs()[cont].getPath().getPath())}`;
+        if (module.getAutoloadsWc().length > 0) {
+            for (let cont = 0; module.getAutoloadsWc().length > cont; cont++) {
+                if (customElements.get(module.getAutoloadsWc()[cont].getName()) === undefined) {
+                    wcComponentPath = `${modulePath}${module.getName()}${this.getSlash()}${this.path.normalize(module.getAutoloadsWc()[cont].getPath().getPath())}`;
                     try {
                         let wcComponent = await import(wcComponentPath);
-                        console.log(`Load web component store in  "${module.getAutoloadsWs()[cont].getPath().getPath()}" store in ${module.getAutoloadsWs()[cont].getName()}`, wcComponent);
+                        console.log(`Load web component store in  "${module.getAutoloadsWc()[cont].getPath().getPath()}" store in ${module.getAutoloadsWc()[cont].getName()}`, wcComponent);
                     }
                     catch (err) {
-                        console.error(`Failed to load autoloads store in ${module.getAutoloadsWs()[cont].getPath().getPath()}`, err);
+                        console.error(`Failed to load autoloads store in ${module.getAutoloadsWc()[cont].getPath().getPath()}`, err);
                     }
                 }
             }

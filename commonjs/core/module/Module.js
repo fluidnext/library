@@ -38,7 +38,7 @@ class Module {
         /**
          * @type Array<string>
          */
-        this.autoloadsWs = [];
+        this.autoloadsWc = [];
     }
     /**
      * @return {string}
@@ -110,14 +110,14 @@ class Module {
     /**
      * @return {Array<WebComponent>}
      */
-    getAutoloadsWs() {
-        return this.autoloadsWs;
+    getAutoloadsWc() {
+        return this.autoloadsWc;
     }
     /**
-     * @param {Array<WebComponent>} autoloadsWs
+     * @param {Array<WebComponent>} autoloadsWc
      */
-    setAutoloadsWs(autoloadsWs) {
-        this.autoloadsWs = autoloadsWs;
+    setAutoloadsWc(autoloadsWc) {
+        this.autoloadsWc = autoloadsWc;
     }
     /**
      * @return {WebComponent}
