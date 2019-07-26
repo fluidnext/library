@@ -22,7 +22,7 @@ export class RegExValidation implements ValidationInterface {
     /**
      * @inheritDoc
      */
-    inValid(data: any): boolean {
+    isValid(data: any): boolean {
 
         let isValid = false;
         if ((this.regEx.exec(data)) !== null) {

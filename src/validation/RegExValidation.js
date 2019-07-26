@@ -12,7 +12,7 @@ export class RegExValidation {
     /**
      * @inheritDoc
      */
-    inValid(data) {
+    isValid(data) {
         let isValid = false;
         if ((this.regEx.exec(data)) !== null) {
             isValid = true;

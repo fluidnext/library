@@ -7,5 +7,5 @@
      * @param data
      * @return {boolean}
      */
-    inValid(data: any) : boolean;
+    isValid(data: any) : boolean;
 }
