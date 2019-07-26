@@ -32,6 +32,6 @@ module.exports = {
         Localize : require('./commonjs/localize/Localize').Localize
     },
     validation : {
-        Localize : require('./commonjs/validation/RegExValidation').RegExValidation
+        RegExValidation : require('./commonjs/validation/RegExValidation').RegExValidation
     }
 };
