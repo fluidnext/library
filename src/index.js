@@ -1,2 +1,2 @@
-export * from './validation/RegExValidation';
+export {RegExValidation} from './validation/RegExValidation';
 //# sourceMappingURL=index.js.map
