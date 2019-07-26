@@ -1,7 +1,7 @@
-import RegExValidation from 'validation/RegExValidation';
+import {RegExValidation} from './validation/RegExValidation';
+import {ValidationInterface} from './validation/ValidationInterface';
 
-export default {
-    validation : {
-        RegExValidation : RegExValidation
-    }
+export {
+    RegExValidation,
+    ValidationInterface
 }

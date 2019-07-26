@@ -1,7 +1,3 @@
-import RegExValidation from 'validation/RegExValidation';
-export default {
-    validation: {
-        RegExValidation: RegExValidation
-    }
-};
+import { RegExValidation } from './validation/RegExValidation';
+export { RegExValidation };
 //# sourceMappingURL=index.js.map
