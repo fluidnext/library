@@ -4,7 +4,6 @@
   "description": "library",
   "main": "index.js",
   "module": "src/index.js",
-  "types": "src/index.ts",
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
