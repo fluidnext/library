@@ -31,6 +31,14 @@ module.exports = {
     localize : {
         Localize : require('./commonjs/localize/Localize').Localize
     },
+    permission : {
+        acl: {
+            Acl: require('./commonjs/permission/acl/Acl').Acl,
+            adapter: {
+                JsAclAdapter: require('./commonjs/permission/acl/adapter/JsAclAdapter').JsAclAdapter,
+            }
+        }
+    },
     validation : {
         RegExValidation : require('./commonjs/validation/RegExValidation').RegExValidation,
         DirectoryExistValidator : require('./commonjs/validation/DirectoryExistValidator').DirectoryExistValidator,
