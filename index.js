@@ -32,6 +32,8 @@ module.exports = {
         Localize : require('./commonjs/localize/Localize').Localize
     },
     validation : {
-        RegExValidation : require('./commonjs/validation/RegExValidation').RegExValidation
+        RegExValidation : require('./commonjs/validation/RegExValidation').RegExValidation,
+        DirectoryExistValidator : require('./commonjs/validation/DirectoryExistValidator').DirectoryExistValidator,
+        DirectoryExistInPathValidator : require('./commonjs/validation/DirectoryExistInPathValidator').DirectoryExistInPathValidator
     }
 };
