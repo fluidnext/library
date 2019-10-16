@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const event_1 = require("../event");
 /**
  * @class DoubleCommunicator
  */
@@ -11,6 +12,7 @@ class DoubleCommunicator {
     constructor(receiverAdapter, senderAdapter) {
         this.senderAdapter = senderAdapter;
         this.receiverAdapter = receiverAdapter;
+        this.eventManager = new event_1.EventManager();
     }
     /**
      * @inheritDoc
@@ -22,7 +24,14 @@ class DoubleCommunicator {
      * @inheritDoc
      */
     send(data) {
+        this.eventManager.emit('send', data);
         this.senderAdapter.sendAdapter(data);
+    }
+    /**
+     * @inheritDoc
+     */
+    onSend(callback) {
+        this.eventManager.on('send', callback);
     }
 }
 exports.DoubleCommunicator = DoubleCommunicator;

@@ -33,6 +33,9 @@ export class SerialPortCommunicatorAdapter implements CommunicatorAdapterInterfa
                     this._serialPort.on('data', this._listeners[cont]);
                 }
 
+                this._serialPort.on('data', (data) => {
+                    console.log('test', data)
+                });
                 this._listeners =  [];
             }
         ));

@@ -1,5 +1,6 @@
 import {CommunicatorInterface} from "./CommunicatorInterface";
 import {CommunicatorAdapterInterface} from "./adapter/CommunicatorAdapterInterface";
+import {EventManager, EventManagerInterface} from "../event";
 
 /**
  * @class DoubleCommunicator
@@ -17,6 +18,11 @@ export class DoubleCommunicator implements CommunicatorInterface{
     protected senderAdapter: CommunicatorAdapterInterface;
 
     /**
+     * @type CommunicatorAdapterInterface
+     */
+    protected eventManager: EventManagerInterface;
+
+    /**
      * @param {CommunicatorAdapterInterface} receiverAdapter
      * @param {CommunicatorAdapterInterface} senderAdapter
      */
@@ -25,6 +31,8 @@ export class DoubleCommunicator implements CommunicatorInterface{
         this.senderAdapter = senderAdapter;
 
         this.receiverAdapter = receiverAdapter;
+
+        this.eventManager = new EventManager();
     }
 
     /**
@@ -38,6 +46,14 @@ export class DoubleCommunicator implements CommunicatorInterface{
      * @inheritDoc
      */
     send(data: Object): void {
+        this.eventManager.emit('send', data);
         this.senderAdapter.sendAdapter(data);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    onSend(callback: Function): void {
+        this.eventManager.on('send', callback);
     }
 }

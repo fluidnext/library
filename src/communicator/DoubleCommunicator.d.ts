@@ -1,5 +1,6 @@
 import { CommunicatorInterface } from "./CommunicatorInterface";
 import { CommunicatorAdapterInterface } from "./adapter/CommunicatorAdapterInterface";
+import { EventManagerInterface } from "../event";
 /**
  * @class DoubleCommunicator
  */
@@ -13,6 +14,10 @@ export declare class DoubleCommunicator implements CommunicatorInterface {
      */
     protected senderAdapter: CommunicatorAdapterInterface;
     /**
+     * @type CommunicatorAdapterInterface
+     */
+    protected eventManager: EventManagerInterface;
+    /**
      * @param {CommunicatorAdapterInterface} receiverAdapter
      * @param {CommunicatorAdapterInterface} senderAdapter
      */
@@ -25,4 +30,8 @@ export declare class DoubleCommunicator implements CommunicatorInterface {
      * @inheritDoc
      */
     send(data: Object): void;
+    /**
+     * @inheritDoc
+     */
+    onSend(callback: Function): void;
 }

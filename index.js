@@ -3,6 +3,7 @@ module.exports = {
         DoubleCommunicator: require('./commonjs/communicator/DoubleCommunicator').DoubleCommunicator,
         adapter: {
             SerialPortCommunicatorAdapter: require('./commonjs/communicator/adapter/SerialPortCommunicatorAdapter').SerialPortCommunicatorAdapter,
+            UdpCommunicatorAdapter: require('./commonjs/communicator/adapter/UdpCommunicatorAdapter').UdpCommunicatorAdapter,
         }
     },
     container : {

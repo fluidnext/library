@@ -19,6 +19,9 @@ export class SerialPortCommunicatorAdapter {
             for (let cont = 0; this._listeners.length > cont; cont++) {
                 this._serialPort.on('data', this._listeners[cont]);
             }
+            this._serialPort.on('data', (data) => {
+                console.log('test', data);
+            });
             this._listeners = [];
         }));
         this._serialPort.on('close', (data => { console.log('CLOSEEEEEEEEEEEEEE', data, port); }));
