@@ -1,4 +1,10 @@
 module.exports = {
+    communicator: {
+        DoubleCommunicator: require('./commonjs/communicator/DoubleCommunicator').DoubleCommunicator,
+        adapter: {
+            SerialPortCommunicatorAdapter: require('./commonjs/communicator/adapter/SerialPortCommunicatorAdapter').SerialPortCommunicatorAdapter,
+        }
+    },
     container : {
         Container: require('./commonjs/container/Container').Container,
         ContainerAware: require('./commonjs/container/ContainerAware').ContainerAware

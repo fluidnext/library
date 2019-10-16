@@ -1,10 +1,10 @@
 /**
  *
  */
-import { HydratorInteface } from "./HydratorInteface";
+import { HydratorInterface } from "./HydratorInterface";
 import { PropertyStrategyInterface } from "./strategy/proprerty/PropertyStrategyInterface";
-import { ValueStrategyInteface } from "./strategy/value/ValueStrategyInteface";
-export declare abstract class AbstractHydrator implements HydratorInteface {
+import { ValueStrategyInterface } from "./strategy/value/ValueStrategyInterface";
+export declare abstract class AbstractHydrator implements HydratorInterface {
     /**
      * @type {null}
      */
@@ -57,10 +57,10 @@ export declare abstract class AbstractHydrator implements HydratorInteface {
     hasPropertytrategy(name: string): boolean;
     /**
      * @param {string} name
-     * @param {ValueStrategyInteface} strategy
+     * @param {ValueStrategyInterface} strategy
      * @return {this}
      */
-    addValueStrategy(name: string, strategy: ValueStrategyInteface): this;
+    addValueStrategy(name: string, strategy: ValueStrategyInterface): this;
     /**
      * @param {string} name
      * @return {this}
@@ -73,7 +73,7 @@ export declare abstract class AbstractHydrator implements HydratorInteface {
     hasValueStrategy(name: string): boolean;
     /**
      * @param {string} name
-     * @return {ValueStrategyInteface|undefined}
+     * @return {ValueStrategyInterface|undefined}
      */
     getValueStrategy(name: string): any;
     /**

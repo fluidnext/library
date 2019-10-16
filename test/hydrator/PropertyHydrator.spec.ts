@@ -2,7 +2,7 @@ import 'mocha';
 import { expect } from 'chai';
 import {PropertyHydrator} from "../../src/hydrator/PropertyHydrator";
 import {PropertyStrategyInterface} from "../../src/hydrator/strategy/proprerty/PropertyStrategyInterface";
-import {ValueStrategyInteface} from "../../src/hydrator/strategy/value/ValueStrategyInteface";
+import {ValueStrategyInteface} from "../../src/hydrator/strategy/value/ValueStrategyInterface";
 
 describe('PropertyHydrator', () => {
 

@@ -1,19 +1,19 @@
-import { HydratorInteface } from "./HydratorInteface";
+import { HydratorInterface } from "./HydratorInterface";
 /**
  *
  */
 export declare class HydratorAware {
     /**
-     * @type HydratorInteface;
+     * @type HydratorInterface;
      */
-    protected hydrator: HydratorInteface;
+    protected hydrator: HydratorInterface;
     /**
-     * @return {HydratorInteface}
+     * @return {HydratorInterface}
      */
-    getHydrator(): HydratorInteface;
+    getHydrator(): HydratorInterface;
     /**
-     * @param {HydratorInteface} hydrator
+     * @param {HydratorInterface} hydrator
      * @return {this}
      */
-    setHydrator(hydrator: HydratorInteface): this;
+    setHydrator(hydrator: HydratorInterface): this;
 }

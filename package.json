@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/fluidnext/library#readme",
   "dependencies": {
-    "@types/node": "^11.11.3"
+    "@types/node": "^11.13.22"
   },
   "jest": {
     "collectCoverage": true,

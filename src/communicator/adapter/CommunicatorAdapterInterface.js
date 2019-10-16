@@ -1,0 +1,1 @@
+//# sourceMappingURL=CommunicatorAdapterInterface.js.map

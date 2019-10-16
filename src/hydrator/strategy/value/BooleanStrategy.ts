@@ -1,9 +1,9 @@
-import {ValueStrategyInteface} from "./ValueStrategyInteface";
+import {ValueStrategyInterface} from "./ValueStrategyInterface";
 
 /**
  *
  */
-export class BooleanStrategy implements ValueStrategyInteface {
+export class BooleanStrategy implements ValueStrategyInterface {
 
     /**
      * @param {string} property

@@ -1,4 +1,4 @@
-import {ValueStrategyInteface} from "./ValueStrategyInteface";
+import {ValueStrategyInterface} from "./ValueStrategyInterface";
 import {PropertyHydrator} from "../../PropertyHydrator";
 import {AbstractHydrator} from "../../AbstractHydrator";
 import {Path} from "../../../path/Path";
@@ -6,7 +6,7 @@ import {Path} from "../../../path/Path";
 /**
  *
  */
-export class PathStrategy implements ValueStrategyInteface {
+export class PathStrategy implements ValueStrategyInterface {
 
     /**
      * @type {PropertyHydrator}

@@ -56,7 +56,7 @@ class AbstractHydrator {
     }
     /**
      * @param {string} name
-     * @param {ValueStrategyInteface} strategy
+     * @param {ValueStrategyInterface} strategy
      * @return {this}
      */
     addValueStrategy(name, strategy) {
@@ -80,7 +80,7 @@ class AbstractHydrator {
     }
     /**
      * @param {string} name
-     * @return {ValueStrategyInteface|undefined}
+     * @return {ValueStrategyInterface|undefined}
      */
     getValueStrategy(name) {
         return this.valueStrategies[name];

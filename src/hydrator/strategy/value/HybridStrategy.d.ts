@@ -1,8 +1,8 @@
-import { ValueStrategyInteface } from "./ValueStrategyInteface";
+import { ValueStrategyInterface } from "./ValueStrategyInterface";
 /**
  *
  */
-export declare class HybridStrategy implements ValueStrategyInteface {
+export declare class HybridStrategy implements ValueStrategyInterface {
     /**
      * @return {string}
      */

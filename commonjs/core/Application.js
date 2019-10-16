@@ -185,6 +185,7 @@ class Application {
         return this.eventManager;
     }
 }
+exports.Application = Application;
 /**
  * @type {string}
  */
@@ -193,4 +194,3 @@ Application.BOOTSTRAP_MODULE = 'bootstrap-module';
  * @type {string}
  */
 Application.LOAD_MODULE = 'laod-module';
-exports.Application = Application;

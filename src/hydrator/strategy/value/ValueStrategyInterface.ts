@@ -3,6 +3,6 @@ import {ValueExtractStrategyInterface} from "./ValueExtractStrategyInterface";
 /**
  *
  */
-export interface ValueStrategyInteface extends ValueExtractStrategyInterface, ValueHydrationStrategyInterface {
+export interface ValueStrategyInterface extends ValueExtractStrategyInterface, ValueHydrationStrategyInterface {
 
 }

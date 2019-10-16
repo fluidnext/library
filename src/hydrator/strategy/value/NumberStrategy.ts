@@ -1,9 +1,9 @@
-import {ValueStrategyInteface} from "./ValueStrategyInteface";
+import {ValueStrategyInterface} from "./ValueStrategyInterface";
 
 /**
  *
  */
-export class NumberStrategy implements ValueStrategyInteface {
+export class NumberStrategy implements ValueStrategyInterface {
 
     /**
      * @param {string} property
