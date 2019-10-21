@@ -56,4 +56,18 @@ export class DoubleCommunicator implements CommunicatorInterface{
     onSend(callback: Function): void {
         this.eventManager.on('send', callback);
     }
+
+    /**
+     * @return CommunicatorAdapterInterface
+     */
+    getSenderAdapter() {
+        return this.senderAdapter;
+    }
+
+    /**
+     * @return CommunicatorAdapterInterface
+     */
+    getReceiverAdapter() {
+        return this.receiverAdapter;
+    }
 }

@@ -1,12 +1,9 @@
 import { CommunicatorAdapterInterface } from "./CommunicatorAdapterInterface";
+import { CommunicatorAdapterAwareInterface } from "./CommunicatorAdapterAwareInterface";
 /**
  * @class SerialPortCommunicatorAdapter
  */
-export declare class SerialPortCommunicatorAdapter implements CommunicatorAdapterInterface {
-    /**
-     * @type {Array}
-     */
-    protected _listeners: Array<Function>;
+export declare class SerialPortCommunicatorAdapter implements CommunicatorAdapterInterface, CommunicatorAdapterAwareInterface {
     /**
      * @type serialPort
      */
@@ -17,12 +14,28 @@ export declare class SerialPortCommunicatorAdapter implements CommunicatorAdapte
      */
     constructor(port: string, options: object);
     /**
-     * @param callback
+     * @inheritDoc
+     */
+    getCommunicatorAdapter(): any;
+    /**
+     * @inheritDoc
+     */
+    setCommunicatorAdapter(adapter: any): this;
+    /**
+     * @inheritDoc
      */
     onMessageAdapter(callback: any): void;
+    /**
+     * @inheritDoc
+     */
+    onCloseAdapter(callback: any): void;
+    /**
+     * @inheritDoc
+     */
+    onErrorAdapter(callback: any): void;
     sendAdapter(data: any): void;
     /**
-     * @param data
+     * @inheritDoc
      */
-    generateMockData(data: any): void;
+    connect(): this;
 }

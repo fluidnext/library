@@ -33,5 +33,17 @@ class DoubleCommunicator {
     onSend(callback) {
         this.eventManager.on('send', callback);
     }
+    /**
+     * @return CommunicatorAdapterInterface
+     */
+    getSenderAdapter() {
+        return this.senderAdapter;
+    }
+    /**
+     * @return CommunicatorAdapterInterface
+     */
+    getReceiverAdapter() {
+        return this.receiverAdapter;
+    }
 }
 exports.DoubleCommunicator = DoubleCommunicator;

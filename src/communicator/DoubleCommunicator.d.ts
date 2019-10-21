@@ -34,4 +34,12 @@ export declare class DoubleCommunicator implements CommunicatorInterface {
      * @inheritDoc
      */
     onSend(callback: Function): void;
+    /**
+     * @return CommunicatorAdapterInterface
+     */
+    getSenderAdapter(): CommunicatorAdapterInterface;
+    /**
+     * @return CommunicatorAdapterInterface
+     */
+    getReceiverAdapter(): CommunicatorAdapterInterface;
 }

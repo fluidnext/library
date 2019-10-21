@@ -7,48 +7,56 @@ export class SerialPortCommunicatorAdapter {
      * @param {Object} options
      */
     constructor(port, options) {
-        /**
-         * @type {Array}
-         */
-        this._listeners = [];
-        this._listeners = [];
         const SerialPort = require("serialport");
+        options = options ? options : {};
+        options = Object.assign(options, { autoOpen: false });
         this._serialPort = new SerialPort(port, options);
-        this._serialPort.on('open', (data => {
-            console.log('OPENNNNNNNNNNNNNNNNN', data, port);
-            for (let cont = 0; this._listeners.length > cont; cont++) {
-                this._serialPort.on('data', this._listeners[cont]);
-            }
-            this._serialPort.on('data', (data) => {
-                console.log('test', data);
-            });
-            this._listeners = [];
-        }));
-        this._serialPort.on('close', (data => { console.log('CLOSEEEEEEEEEEEEEE', data, port); }));
-        this._serialPort.on('error', (data => { console.log('ERRORRRRRRRRRRRRRRR', data), port; }));
     }
     /**
-     * @param callback
+     * @inheritDoc
+     */
+    getCommunicatorAdapter() {
+        return this._serialPort;
+    }
+    /**
+     * @inheritDoc
+     */
+    setCommunicatorAdapter(adapter) {
+        this._serialPort = adapter;
+        return this;
+    }
+    /**
+     * @inheritDoc
      */
     onMessageAdapter(callback) {
-        if (this._serialPort.isOpen) {
-            this._serialPort.on('data', callback);
-        }
-        else {
-            this._listeners.push(callback);
-        }
-    }
-    /*
-     * @param data
-     */
-    sendAdapter(data) {
-        this._serialPort.write(data);
+        this._serialPort.on('data', callback);
     }
     /**
-     * @param data
+     * @inheritDoc
      */
-    generateMockData(data) {
-        this._serialPort.emit('data', data);
+    onCloseAdapter(callback) {
+        this._serialPort.on('close', callback);
+    }
+    /**
+     * @inheritDoc
+     */
+    onErrorAdapter(callback) {
+        this._serialPort.on('error', callback);
+    }
+    /*
+     * @inheritDoc
+     */
+    sendAdapter(data) {
+        if (this._serialPort.isOpen) {
+            this._serialPort.write(data);
+        }
+    }
+    /**
+     * @inheritDoc
+     */
+    connect() {
+        this._serialPort.open();
+        return this;
     }
 }
 //# sourceMappingURL=SerialPortCommunicatorAdapter.js.map

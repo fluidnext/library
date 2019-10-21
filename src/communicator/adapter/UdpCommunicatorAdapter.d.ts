@@ -8,17 +8,31 @@ export declare class UdpCommunicatorAdapter implements CommunicatorAdapterInterf
      */
     protected _udp: any;
     /**
-     * @param {String} port
-     * @param {Object} options
+     * @type string
      */
-    constructor(port: string, options: object);
+    protected _port: string;
+    /**
+     * @param {String} port
+     */
+    constructor(port: string);
     /**
      * @param callback
      */
     onMessageAdapter(callback: any): void;
+    /**
+     * @inheritDoc
+     */
+    onCloseAdapter(callback: any): void;
+    /**
+     * @inheritDoc
+     */
+    onErrorAdapter(callback: any): void;
+    /**
+     * @inheritDoc
+     */
     sendAdapter(data: any): void;
     /**
-     * @param data
+     * @inheritDoc
      */
-    generateMockData(data: any): void;
+    connect(): this;
 }
