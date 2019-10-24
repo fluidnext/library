@@ -1,5 +1,7 @@
+/// <reference types="node" />
 import { CommunicatorAdapterInterface } from "./CommunicatorAdapterInterface";
 import { CommunicatorAdapterAwareInterface } from "./CommunicatorAdapterAwareInterface";
+import { Stream } from "stream";
 /**
  * @class SerialPortCommunicatorAdapter
  */
@@ -8,6 +10,10 @@ export declare class SerialPortCommunicatorAdapter implements CommunicatorAdapte
      * @type serialPort
      */
     protected _serialPort: any;
+    /**
+     * @type Stream
+     */
+    protected _parser: Stream;
     /**
      * @param {String} port
      * @param {Object} options
@@ -21,6 +27,15 @@ export declare class SerialPortCommunicatorAdapter implements CommunicatorAdapte
      * @inheritDoc
      */
     setCommunicatorAdapter(adapter: any): this;
+    /**
+     * @param {Stream} parser
+     * @return CommunicatorAdapterInterface
+     */
+    setParser(parser: Stream): this;
+    /**
+     * @param Stream
+     */
+    getParser(): Stream;
     /**
      * @inheritDoc
      */
@@ -38,4 +53,12 @@ export declare class SerialPortCommunicatorAdapter implements CommunicatorAdapte
      * @inheritDoc
      */
     connect(): this;
+    /**
+     * @inheritDoc
+     */
+    close(): this;
+    /**
+     * @private
+     */
+    _getStreamString(): "_parser" | "_serialPort";
 }

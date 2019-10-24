@@ -19,12 +19,17 @@ export interface CommunicatorAdapterInterface {
     onCloseAdapter(callback: Function): void;
 
     /**
-     * @param data
+     * @param {string} data
      */
-    sendAdapter(data: Object): void;
+    sendAdapter(data: string): void;
 
     /**
      * @return CommunicatorAdapterInterface
      */
     connect(): CommunicatorAdapterInterface;
+
+    /**
+     * @return CommunicatorAdapterInterface
+     */
+    close();
 }

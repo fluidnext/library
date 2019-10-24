@@ -29,7 +29,7 @@ export declare class DoubleCommunicator implements CommunicatorInterface {
     /**
      * @inheritDoc
      */
-    send(data: Object): void;
+    send(data: any): void;
     /**
      * @inheritDoc
      */
@@ -42,4 +42,14 @@ export declare class DoubleCommunicator implements CommunicatorInterface {
      * @return CommunicatorAdapterInterface
      */
     getReceiverAdapter(): CommunicatorAdapterInterface;
+    /**
+     * @param {CommunicatorAdapterInterface} adapter
+     * @return CommunicatorAdapterInterface
+     */
+    setSenderAdapter(adapter: CommunicatorAdapterInterface): this;
+    /**
+     * @param {CommunicatorAdapterInterface} adapter
+     * @return CommunicatorAdapterInterface
+     */
+    setReceiverAdapter(adapter: CommunicatorAdapterInterface): void;
 }

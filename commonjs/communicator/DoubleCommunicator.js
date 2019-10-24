@@ -25,7 +25,8 @@ class DoubleCommunicator {
      */
     send(data) {
         this.eventManager.emit('send', data);
-        this.senderAdapter.sendAdapter(data);
+        let sendData = (data !== null && typeof data === 'object') ? JSON.stringify(data) : data;
+        this.senderAdapter.sendAdapter(sendData);
     }
     /**
      * @inheritDoc
@@ -44,6 +45,21 @@ class DoubleCommunicator {
      */
     getReceiverAdapter() {
         return this.receiverAdapter;
+    }
+    /**
+     * @param {CommunicatorAdapterInterface} adapter
+     * @return CommunicatorAdapterInterface
+     */
+    setSenderAdapter(adapter) {
+        this.senderAdapter = adapter;
+        return this;
+    }
+    /**
+     * @param {CommunicatorAdapterInterface} adapter
+     * @return CommunicatorAdapterInterface
+     */
+    setReceiverAdapter(adapter) {
+        this.receiverAdapter = adapter;
     }
 }
 exports.DoubleCommunicator = DoubleCommunicator;

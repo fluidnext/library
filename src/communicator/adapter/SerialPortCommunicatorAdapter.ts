@@ -1,5 +1,6 @@
 import {CommunicatorAdapterInterface} from "./CommunicatorAdapterInterface";
 import {CommunicatorAdapterAwareInterface} from "./CommunicatorAdapterAwareInterface";
+import {Stream} from "stream";
 
 /**
  * @class SerialPortCommunicatorAdapter
@@ -10,6 +11,11 @@ export class SerialPortCommunicatorAdapter implements CommunicatorAdapterInterfa
      * @type serialPort
      */
     protected _serialPort;
+
+    /**
+     * @type Stream
+     */
+    protected _parser: Stream = null;
 
     /**
      * @param {String} port
@@ -39,24 +45,40 @@ export class SerialPortCommunicatorAdapter implements CommunicatorAdapterInterfa
     }
 
     /**
+     * @param {Stream} parser
+     * @return CommunicatorAdapterInterface
+     */
+    setParser(parser: Stream) {
+        this._parser = parser;
+        return this;
+    }
+
+    /**
+     * @param Stream
+     */
+    getParser() {
+        return this._parser;
+    }
+
+    /**
      * @inheritDoc
      */
     onMessageAdapter(callback) {
-        this._serialPort.on('data', callback);
+        this[this._getStreamString()].on('data', callback);
     }
 
     /**
      * @inheritDoc
      */
     onCloseAdapter(callback) {
-        this._serialPort.on('close', callback);
+        this[this._getStreamString()].on('close', callback);
     }
 
     /**
      * @inheritDoc
      */
     onErrorAdapter(callback) {
-        this._serialPort.on('error', callback);
+        this[this._getStreamString()].on('error', callback);
     }
 
     /*
@@ -74,5 +96,20 @@ export class SerialPortCommunicatorAdapter implements CommunicatorAdapterInterfa
     connect() {
         this._serialPort.open();
         return this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    close() {
+        this._serialPort.close();
+        return this;
+    }
+
+    /**
+     * @private
+     */
+    _getStreamString() {
+        return this._parser ? '_parser' : '_serialPort';
     }
 }

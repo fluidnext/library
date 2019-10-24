@@ -16,14 +16,40 @@ export class UdpCommunicatorAdapter implements CommunicatorAdapterInterface {
     protected _port: string;
 
     /**
-     * @param {String} port
+     * @type string
      */
-    constructor(port: string) {
+    protected _sendPort: string;
+
+    /**
+     * @type string
+     */
+    protected _sentAddress: string = 'localhost';
+
+    /**
+     * @type boolean
+     */
+    protected _isBroadcast: boolean = false;
+
+
+    /**
+     * @param {String} port
+     * @param  options
+     */
+    constructor(port: string, options: any) {
 
         const Dgram = require('dgram');
         this._udp = Dgram.createSocket('udp4');
 
+        options = options ? options : {};
+
+        this._isBroadcast = !!options['broadcast'];
+        this._sendPort = options['sendPort'] ? options['sendPort'] : null;
+        this._sentAddress = options['sentAddress'] ? options['sentAddress'] : this._sentAddress;
         this._port = port;
+
+        this._udp.on('listening', () => {
+            this._udp.setBroadcast(this._isBroadcast);
+        });
     }
 
     /**
@@ -51,7 +77,8 @@ export class UdpCommunicatorAdapter implements CommunicatorAdapterInterface {
      * @inheritDoc
      */
     sendAdapter(data) {
-        this._udp.send(data);
+        console.log('UPD', data,  0, data.length, this._sendPort, this._sentAddress);
+        this._udp.send(data, 0, data.length, this._sendPort, this._sentAddress);
     }
 
     /**
@@ -59,6 +86,15 @@ export class UdpCommunicatorAdapter implements CommunicatorAdapterInterface {
      */
     connect() {
         this._udp.bind(this._port);
+        return this;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    close() {
+        this._udp.close();
         return this;
     }
 }

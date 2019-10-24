@@ -6,11 +6,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class UdpCommunicatorAdapter {
     /**
      * @param {String} port
+     * @param  options
      */
-    constructor(port) {
+    constructor(port, options) {
+        /**
+         * @type string
+         */
+        this._sentAddress = 'localhost';
+        /**
+         * @type boolean
+         */
+        this._isBroadcast = false;
         const Dgram = require('dgram');
         this._udp = Dgram.createSocket('udp4');
+        options = options ? options : {};
+        this._isBroadcast = !!options['broadcast'];
+        this._sendPort = options['sendPort'] ? options['sendPort'] : null;
+        this._sentAddress = options['sentAddress'] ? options['sentAddress'] : this._sentAddress;
         this._port = port;
+        this._udp.on('listening', () => {
+            this._udp.setBroadcast(this._isBroadcast);
+        });
     }
     /**
      * @param callback
@@ -34,13 +50,21 @@ class UdpCommunicatorAdapter {
      * @inheritDoc
      */
     sendAdapter(data) {
-        this._udp.send(data);
+        console.log('UPD', data, 0, data.length, this._sendPort, this._sentAddress);
+        this._udp.send(data, 0, data.length, this._sendPort, this._sentAddress);
     }
     /**
      * @inheritDoc
      */
     connect() {
         this._udp.bind(this._port);
+        return this;
+    }
+    /**
+     * @inheritDoc
+     */
+    close() {
+        this._udp.close();
         return this;
     }
 }

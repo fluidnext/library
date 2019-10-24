@@ -12,9 +12,22 @@ export declare class UdpCommunicatorAdapter implements CommunicatorAdapterInterf
      */
     protected _port: string;
     /**
-     * @param {String} port
+     * @type string
      */
-    constructor(port: string);
+    protected _sendPort: string;
+    /**
+     * @type string
+     */
+    protected _sentAddress: string;
+    /**
+     * @type boolean
+     */
+    protected _isBroadcast: boolean;
+    /**
+     * @param {String} port
+     * @param  options
+     */
+    constructor(port: string, options: any);
     /**
      * @param callback
      */
@@ -35,4 +48,8 @@ export declare class UdpCommunicatorAdapter implements CommunicatorAdapterInterf
      * @inheritDoc
      */
     connect(): this;
+    /**
+     * @inheritDoc
+     */
+    close(): this;
 }

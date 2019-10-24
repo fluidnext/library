@@ -7,6 +7,10 @@ export class SerialPortCommunicatorAdapter {
      * @param {Object} options
      */
     constructor(port, options) {
+        /**
+         * @type Stream
+         */
+        this._parser = null;
         const SerialPort = require("serialport");
         options = options ? options : {};
         options = Object.assign(options, { autoOpen: false });
@@ -26,22 +30,36 @@ export class SerialPortCommunicatorAdapter {
         return this;
     }
     /**
+     * @param {Stream} parser
+     * @return CommunicatorAdapterInterface
+     */
+    setParser(parser) {
+        this._parser = parser;
+        return this;
+    }
+    /**
+     * @param Stream
+     */
+    getParser() {
+        return this._parser;
+    }
+    /**
      * @inheritDoc
      */
     onMessageAdapter(callback) {
-        this._serialPort.on('data', callback);
+        this[this._getStreamString()].on('data', callback);
     }
     /**
      * @inheritDoc
      */
     onCloseAdapter(callback) {
-        this._serialPort.on('close', callback);
+        this[this._getStreamString()].on('close', callback);
     }
     /**
      * @inheritDoc
      */
     onErrorAdapter(callback) {
-        this._serialPort.on('error', callback);
+        this[this._getStreamString()].on('error', callback);
     }
     /*
      * @inheritDoc
@@ -57,6 +75,19 @@ export class SerialPortCommunicatorAdapter {
     connect() {
         this._serialPort.open();
         return this;
+    }
+    /**
+     * @inheritDoc
+     */
+    close() {
+        this._serialPort.close();
+        return this;
+    }
+    /**
+     * @private
+     */
+    _getStreamString() {
+        return this._parser ? '_parser' : '_serialPort';
     }
 }
 //# sourceMappingURL=SerialPortCommunicatorAdapter.js.map
