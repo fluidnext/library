@@ -48,7 +48,6 @@ export class UdpCommunicatorAdapter {
      * @inheritDoc
      */
     sendAdapter(data) {
-        console.log('UPD', data, 0, data.length, this._sendPort, this._sentAddress);
         this._udp.send(data, 0, data.length, this._sendPort, this._sentAddress);
     }
     /**
