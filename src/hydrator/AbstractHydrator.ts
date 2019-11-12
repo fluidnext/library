@@ -2,7 +2,7 @@
  *
  */
 import {HydratorInterface} from "./HydratorInterface";
-import {PropertyStrategyInterface} from "./strategy/proprerty/PropertyStrategyInterface";
+import {PropertyStrategyInterface} from "./strategy/property/PropertyStrategyInterface";
 import {ValueStrategyInterface} from "./strategy/value/ValueStrategyInterface";
 
 export abstract class AbstractHydrator implements HydratorInterface {

@@ -1,6 +1,7 @@
 module.exports = {
     communicator: {
         DoubleCommunicator: require('./commonjs/communicator/DoubleCommunicator').DoubleCommunicator,
+        Communicator: require('./commonjs/communicator/Communicator').Communicator,
         adapter: {
             SerialPortCommunicatorAdapter: require('./commonjs/communicator/adapter/SerialPortCommunicatorAdapter').SerialPortCommunicatorAdapter,
             UdpCommunicatorAdapter: require('./commonjs/communicator/adapter/UdpCommunicatorAdapter').UdpCommunicatorAdapter,
@@ -28,6 +29,9 @@ module.exports = {
         PropertyHydrator: require('./commonjs/hydrator/PropertyHydrator').PropertyHydrator,
         AggregatePropertyHydrator: require('./commonjs/hydrator/AggregatePropertyHydrator').AggregatePropertyHydrator,
         strategy : {
+            property: {
+                MapStrategy : require('./commonjs/hydrator/strategy/property/MapStrategy').MapStrategy,
+            },
             value : {
                 HydratorStrategy : require('./commonjs/hydrator/strategy/value/HydratorStrategy').HydratorStrategy,
                 HybridStrategy : require('./commonjs/hydrator/strategy/value/HybridStrategy').HybridStrategy,

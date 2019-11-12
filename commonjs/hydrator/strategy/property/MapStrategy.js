@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- *
+ * @class MapStrategy
  */
-class MapProprertyStrategy {
+class MapStrategy {
     /**
      * @param {string} hydrate
      * @param {string} extract
@@ -33,4 +33,4 @@ class MapProprertyStrategy {
         return this.changeHydrateProperty ? this.changeHydrateProperty : property;
     }
 }
-exports.MapProprertyStrategy = MapProprertyStrategy;
+exports.MapStrategy = MapStrategy;

@@ -52,4 +52,9 @@ export declare class DoubleCommunicator implements CommunicatorInterface {
      * @return CommunicatorAdapterInterface
      */
     setReceiverAdapter(adapter: CommunicatorAdapterInterface): void;
+    /**
+     * @inheritDoc
+     */
+    getPath(): string;
+    close(): void;
 }

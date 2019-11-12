@@ -88,12 +88,26 @@ export class UdpCommunicatorAdapter implements CommunicatorAdapterInterface {
         return this;
     }
 
-
     /**
      * @inheritDoc
      */
     close() {
-        this._udp.close();
-        return this;
+        return new Promise((resolve, reject) => {
+            try {
+                this._udp.close((data) => {
+                    console.log('CLOSE SOCKET', data);
+                    resolve(this);
+                });
+            } catch (error) {
+                reject(error)
+            }
+        });
+    }
+
+    /**
+     *
+     */
+    getPath() {
+        return this._udp.port;
     }
 }

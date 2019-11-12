@@ -1,8 +1,8 @@
 import {PropertyStrategyInterface} from "./PropertyStrategyInterface";
 /**
- *
+ * @class MapStrategy
  */
-export class MapProprertyStrategy implements PropertyStrategyInterface {
+export class MapStrategy implements PropertyStrategyInterface {
 
     /**
      * @type {object}

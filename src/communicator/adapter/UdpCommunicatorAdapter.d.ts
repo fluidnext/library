@@ -51,5 +51,9 @@ export declare class UdpCommunicatorAdapter implements CommunicatorAdapterInterf
     /**
      * @inheritDoc
      */
-    close(): this;
+    close(): Promise<unknown>;
+    /**
+     *
+     */
+    getPath(): any;
 }

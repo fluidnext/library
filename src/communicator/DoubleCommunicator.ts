@@ -88,4 +88,15 @@ export class DoubleCommunicator implements CommunicatorInterface{
     setReceiverAdapter(adapter: CommunicatorAdapterInterface) {
         this.receiverAdapter = adapter;
     }
+
+    /**
+     * @inheritDoc
+     */
+    getPath() {
+        return 'TODO'
+    }
+
+    close() {
+        new Promise((resolve, reject) => {});
+    }
 }

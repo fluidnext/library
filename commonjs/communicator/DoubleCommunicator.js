@@ -61,5 +61,14 @@ class DoubleCommunicator {
     setReceiverAdapter(adapter) {
         this.receiverAdapter = adapter;
     }
+    /**
+     * @inheritDoc
+     */
+    getPath() {
+        return 'TODO';
+    }
+    close() {
+        new Promise((resolve, reject) => { });
+    }
 }
 exports.DoubleCommunicator = DoubleCommunicator;

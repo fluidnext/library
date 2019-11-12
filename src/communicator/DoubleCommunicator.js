@@ -59,5 +59,14 @@ export class DoubleCommunicator {
     setReceiverAdapter(adapter) {
         this.receiverAdapter = adapter;
     }
+    /**
+     * @inheritDoc
+     */
+    getPath() {
+        return 'TODO';
+    }
+    close() {
+        new Promise((resolve, reject) => { });
+    }
 }
 //# sourceMappingURL=DoubleCommunicator.js.map

@@ -1,7 +1,7 @@
 /**
- *
+ * @class MapStrategy
  */
-export class MapProprertyStrategy {
+export class MapStrategy {
     /**
      * @param {string} hydrate
      * @param {string} extract
@@ -31,4 +31,4 @@ export class MapProprertyStrategy {
         return this.changeHydrateProperty ? this.changeHydrateProperty : property;
     }
 }
-//# sourceMappingURL=MapHydratorStrategy.js.map
+//# sourceMappingURL=MapStrategy.js.map

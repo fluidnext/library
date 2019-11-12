@@ -80,8 +80,20 @@ export class SerialPortCommunicatorAdapter {
      * @inheritDoc
      */
     close() {
-        this._serialPort.close();
-        return this;
+        return new Promise((resolve, reject) => {
+            this._serialPort.close((error) => {
+                if (error) {
+                    reject(error);
+                }
+                resolve(this);
+            });
+        });
+    }
+    /**
+     * @inheritDoc
+     */
+    getPath() {
+        return this._serialPort.path;
     }
     /**
      * @private

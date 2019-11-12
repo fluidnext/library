@@ -14,4 +14,12 @@ export interface CommunicatorInterface {
      * @param data
      */
     send(data: Object): void;
+    /**
+     * @return {string}
+     */
+    getPath(): any;
+    /**
+     * @return Promise
+     */
+    close(): any;
 }
