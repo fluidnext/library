@@ -10,7 +10,7 @@ export class UdpCommunicatorAdapter {
         /**
          * @type string
          */
-        this._sentAddress = 'localhost';
+        this._sendAddress = 'localhost';
         /**
          * @type boolean
          */
@@ -20,7 +20,7 @@ export class UdpCommunicatorAdapter {
         options = options ? options : {};
         this._isBroadcast = !!options['broadcast'];
         this._sendPort = options['sendPort'] ? options['sendPort'] : null;
-        this._sentAddress = options['sentAddress'] ? options['sentAddress'] : this._sentAddress;
+        this._sendAddress = options['sendAddress'] ? options['sendAddress'] : this._sendAddress;
         this._port = port;
         this._udp.on('listening', () => {
             this._udp.setBroadcast(this._isBroadcast);
@@ -48,7 +48,7 @@ export class UdpCommunicatorAdapter {
      * @inheritDoc
      */
     sendAdapter(data) {
-        this._udp.send(data, 0, data.length, this._sendPort, this._sentAddress);
+        this._udp.send(data, 0, data.length, this._sendPort, this._sendAddress);
     }
     /**
      * @inheritDoc
