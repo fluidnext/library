@@ -26,4 +26,8 @@ export interface CommunicatorAdapterInterface {
      * @return CommunicatorAdapterInterface
      */
     close(): any;
+    /**
+     * @return string
+     */
+    getPath(): any;
 }

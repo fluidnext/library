@@ -18,7 +18,7 @@ export declare class UdpCommunicatorAdapter implements CommunicatorAdapterInterf
     /**
      * @type string
      */
-    protected _sentAddress: string;
+    protected _sendAddress: string;
     /**
      * @type boolean
      */
@@ -51,5 +51,9 @@ export declare class UdpCommunicatorAdapter implements CommunicatorAdapterInterf
     /**
      * @inheritDoc
      */
-    close(): this;
+    close(): Promise<unknown>;
+    /**
+     *
+     */
+    getPath(): any;
 }

@@ -56,7 +56,11 @@ export declare class SerialPortCommunicatorAdapter implements CommunicatorAdapte
     /**
      * @inheritDoc
      */
-    close(): this;
+    close(): Promise<unknown>;
+    /**
+     * @inheritDoc
+     */
+    getPath(): any;
     /**
      * @private
      */

@@ -23,7 +23,7 @@ export class UdpCommunicatorAdapter implements CommunicatorAdapterInterface {
     /**
      * @type string
      */
-    protected _sentAddress: string = 'localhost';
+    protected _sendAddress: string = 'localhost';
 
     /**
      * @type boolean
@@ -44,7 +44,7 @@ export class UdpCommunicatorAdapter implements CommunicatorAdapterInterface {
 
         this._isBroadcast = !!options['broadcast'];
         this._sendPort = options['sendPort'] ? options['sendPort'] : null;
-        this._sentAddress = options['sentAddress'] ? options['sentAddress'] : this._sentAddress;
+        this._sendAddress = options['sendAddress'] ? options['sendAddress'] : this._sendAddress;
         this._port = port;
 
         this._udp.on('listening', () => {
@@ -77,7 +77,7 @@ export class UdpCommunicatorAdapter implements CommunicatorAdapterInterface {
      * @inheritDoc
      */
     sendAdapter(data) {
-        this._udp.send(data, 0, data.length, this._sendPort, this._sentAddress);
+        this._udp.send(data, 0, data.length, this._sendPort, this._sendAddress);
     }
 
     /**
@@ -88,12 +88,26 @@ export class UdpCommunicatorAdapter implements CommunicatorAdapterInterface {
         return this;
     }
 
-
     /**
      * @inheritDoc
      */
     close() {
-        this._udp.close();
-        return this;
+        return new Promise((resolve, reject) => {
+            try {
+                this._udp.close((data) => {
+                    console.log('CLOSE SOCKET', data);
+                    resolve(this);
+                });
+            } catch (error) {
+                reject(error)
+            }
+        });
+    }
+
+    /**
+     *
+     */
+    getPath() {
+        return this._udp.port;
     }
 }

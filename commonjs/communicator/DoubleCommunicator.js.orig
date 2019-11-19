@@ -1,91 +1,65 @@
-import {CommunicatorInterface} from "./CommunicatorInterface";
-import {CommunicatorAdapterInterface} from "./adapter/CommunicatorAdapterInterface";
-import {EventManager, EventManagerInterface} from "../event";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const event_1 = require("../event");
 /**
  * @class DoubleCommunicator
  */
-export class DoubleCommunicator implements CommunicatorInterface{
-
-    /**
-     * @type CommunicatorAdapterInterface
-     */
-    protected receiverAdapter: CommunicatorAdapterInterface;
-
-    /**
-     * @type CommunicatorAdapterInterface
-     */
-    protected senderAdapter: CommunicatorAdapterInterface;
-
-    /**
-     * @type CommunicatorAdapterInterface
-     */
-    protected eventManager: EventManagerInterface;
-
+class DoubleCommunicator {
     /**
      * @param {CommunicatorAdapterInterface} receiverAdapter
      * @param {CommunicatorAdapterInterface} senderAdapter
      */
-    constructor(receiverAdapter: CommunicatorAdapterInterface, senderAdapter: CommunicatorAdapterInterface) {
-
+    constructor(receiverAdapter, senderAdapter) {
         this.senderAdapter = senderAdapter;
-
         this.receiverAdapter = receiverAdapter;
-
-        this.eventManager = new EventManager();
+        this.eventManager = new event_1.EventManager();
     }
-
     /**
      * @inheritDoc
      */
-    onMessage(callback: Function): void {
+    onMessage(callback) {
         this.receiverAdapter.onMessageAdapter(callback);
     }
-
     /**
      * @inheritDoc
      */
-    send(data: any): void {
+    send(data) {
         this.eventManager.emit('send', data);
         let sendData = (data !== null && typeof data === 'object') ? JSON.stringify(data) : data;
         this.senderAdapter.sendAdapter(sendData);
     }
-
     /**
      * @inheritDoc
      */
-    onSend(callback: Function): void {
+    onSend(callback) {
         this.eventManager.on('send', callback);
     }
-
     /**
      * @return CommunicatorAdapterInterface
      */
     getSenderAdapter() {
         return this.senderAdapter;
     }
-
     /**
      * @return CommunicatorAdapterInterface
      */
     getReceiverAdapter() {
         return this.receiverAdapter;
     }
-
     /**
      * @param {CommunicatorAdapterInterface} adapter
      * @return CommunicatorAdapterInterface
      */
-    setSenderAdapter(adapter: CommunicatorAdapterInterface) {
+    setSenderAdapter(adapter) {
         this.senderAdapter = adapter;
         return this;
     }
-
     /**
      * @param {CommunicatorAdapterInterface} adapter
      * @return CommunicatorAdapterInterface
      */
-    setReceiverAdapter(adapter: CommunicatorAdapterInterface) {
+    setReceiverAdapter(adapter) {
         this.receiverAdapter = adapter;
     }
 }
+exports.DoubleCommunicator = DoubleCommunicator;

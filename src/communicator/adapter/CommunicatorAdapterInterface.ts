@@ -32,4 +32,9 @@ export interface CommunicatorAdapterInterface {
      * @return CommunicatorAdapterInterface
      */
     close();
+
+    /**
+     * @return string
+     */
+    getPath();
 }
