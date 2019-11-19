@@ -43,6 +43,13 @@ export class Communicator implements CommunicatorInterface {
     /**
      * @inheritDoc
      */
+    onError(callback: Function): void {
+        this.adapter.onErrorAdapter(callback);
+    }
+
+    /**
+     * @inheritDoc
+     */
     onSend(callback: Function): void {
         this.eventManager.on('send', callback);
     }

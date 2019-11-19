@@ -1,6 +1,5 @@
 module.exports = {
     communicator: {
-        DoubleCommunicator: require('./commonjs/communicator/DoubleCommunicator').DoubleCommunicator,
         Communicator: require('./commonjs/communicator/Communicator').Communicator,
         adapter: {
             SerialPortCommunicatorAdapter: require('./commonjs/communicator/adapter/SerialPortCommunicatorAdapter').SerialPortCommunicatorAdapter,

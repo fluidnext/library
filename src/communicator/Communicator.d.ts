@@ -28,6 +28,10 @@ export declare class Communicator implements CommunicatorInterface {
     /**
      * @inheritDoc
      */
+    onError(callback: Function): void;
+    /**
+     * @inheritDoc
+     */
     onSend(callback: Function): void;
     /**
      * @inheritDoc

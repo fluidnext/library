@@ -11,6 +11,11 @@ export interface CommunicatorInterface {
     /**
      * @param {Function} callback
      */
+    onError(callback: Function): void;
+
+    /**
+     * @param {Function} callback
+     */
     onSend(callback: Function): void;
 
     /**

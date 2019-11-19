@@ -26,6 +26,12 @@ export class Communicator {
     /**
      * @inheritDoc
      */
+    onError(callback) {
+        this.adapter.onErrorAdapter(callback);
+    }
+    /**
+     * @inheritDoc
+     */
     onSend(callback) {
         this.eventManager.on('send', callback);
     }
