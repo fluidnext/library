@@ -12,7 +12,6 @@ export class BooleanStrategy implements ValueStrategyInterface {
      */
     hydrateValue(property: string, data: any) {
 
-
         let hydrate = data;
 
         switch (typeof data) {
