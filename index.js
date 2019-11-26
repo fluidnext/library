@@ -1,6 +1,7 @@
 module.exports = {
     communicator: {
         Communicator: require('./commonjs/communicator/Communicator').Communicator,
+        CommunicatorSplitter: require('./commonjs/communicator/CommunicatorSplitter').CommunicatorSplitter,
         adapter: {
             SerialPortCommunicatorAdapter: require('./commonjs/communicator/adapter/SerialPortCommunicatorAdapter').SerialPortCommunicatorAdapter,
             UdpCommunicatorAdapter: require('./commonjs/communicator/adapter/UdpCommunicatorAdapter').UdpCommunicatorAdapter,
@@ -29,14 +30,14 @@ module.exports = {
         AggregatePropertyHydrator: require('./commonjs/hydrator/AggregatePropertyHydrator').AggregatePropertyHydrator,
         strategy : {
             property: {
-                MapStrategy : require('./commonjs/hydrator/strategy/property/MapStrategy').MapStrategy,
+                MapStrategy: require('./commonjs/hydrator/strategy/property/MapStrategy').MapStrategy,
             },
             value : {
-                HydratorStrategy : require('./commonjs/hydrator/strategy/value/HydratorStrategy').HydratorStrategy,
-                HybridStrategy : require('./commonjs/hydrator/strategy/value/HybridStrategy').HybridStrategy,
-                NumberStrategy : require('./commonjs/hydrator/strategy/value/NumberStrategy').NumberStrategy,
-                BooleanStrategy : require('./commonjs/hydrator/strategy/value/BooleanStrategy').BooleanStrategy,
-                PathStrategy : require('./commonjs/hydrator/strategy/value/PathStrategy').PathStrategy,
+                HydratorStrategy: require('./commonjs/hydrator/strategy/value/HydratorStrategy').HydratorStrategy,
+                HybridStrategy: require('./commonjs/hydrator/strategy/value/HybridStrategy').HybridStrategy,
+                NumberStrategy: require('./commonjs/hydrator/strategy/value/NumberStrategy').NumberStrategy,
+                BooleanStrategy: require('./commonjs/hydrator/strategy/value/BooleanStrategy').BooleanStrategy,
+                PathStrategy: require('./commonjs/hydrator/strategy/value/PathStrategy').PathStrategy,
             }
         }
     },
@@ -51,9 +52,12 @@ module.exports = {
             }
         }
     },
-    validation : {
-        RegExValidation : require('./commonjs/validation/RegExValidation').RegExValidation,
-        DirectoryExistValidator : require('./commonjs/validation/DirectoryExistValidator').DirectoryExistValidator,
-        DirectoryExistInPathValidator : require('./commonjs/validation/DirectoryExistInPathValidator').DirectoryExistInPathValidator
+    transform: {
+        StringTransform: require('./commonjs/trasform/StringTransform').StringTransform,
+    },
+    validation: {
+        RegExValidation: require('./commonjs/validation/RegExValidation').RegExValidation,
+        DirectoryExistValidator: require('./commonjs/validation/DirectoryExistValidator').DirectoryExistValidator,
+        DirectoryExistInPathValidator: require('./commonjs/validation/DirectoryExistInPathValidator').DirectoryExistInPathValidator
     }
 };

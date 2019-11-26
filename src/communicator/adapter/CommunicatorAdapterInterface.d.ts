@@ -16,8 +16,9 @@ export interface CommunicatorAdapterInterface {
     onCloseAdapter(callback: Function): void;
     /**
      * @param {string} data
+     * @param {Function} data
      */
-    sendAdapter(data: string): void;
+    sendAdapter(data: string, callback?: Function): void;
     /**
      * @return CommunicatorAdapterInterface
      */

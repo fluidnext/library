@@ -4,12 +4,17 @@ import { EventManager } from "../event";
  */
 export class Communicator {
     /**
-     * @param adapter
+     * @param {CommunicatorAdapterInterface} adapter
+     * @param {TransformInterface} transform
      */
-    constructor(adapter) {
+    constructor(adapter, transform = null) {
+        /**
+         * @type TransformInterface
+         */
+        this.transform = null;
         this.adapter = adapter;
         this.eventManager = new EventManager();
-        ;
+        this.transform = transform;
     }
     /**
      * @inheritDoc
@@ -40,9 +45,7 @@ export class Communicator {
      */
     send(data) {
         this.eventManager.emit('send', data);
-        //TODO trasformer to get string???
-        let sendData = (typeof data === 'object') ? JSON.stringify(data) : data;
-        this.adapter.sendAdapter(sendData);
+        this.adapter.sendAdapter(this.transform ? this.transform.transform(data) : data);
     }
     /**
      * @inheritDoc

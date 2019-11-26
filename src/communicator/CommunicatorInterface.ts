@@ -20,6 +20,7 @@ export interface CommunicatorInterface {
 
     /**
      * @param data
+     * @param {Function} data
      */
     send(data: Object): void;
 

@@ -49,8 +49,8 @@ class UdpCommunicatorAdapter {
     /**
      * @inheritDoc
      */
-    sendAdapter(data) {
-        this._udp.send(data, 0, data.length, this._sendPort, this._sendAddress);
+    sendAdapter(data, callback) {
+        this._udp.send(data, 0, data.length, this._sendPort, this._sendAddress, callback ? callback : () => { });
     }
     /**
      * @inheritDoc
