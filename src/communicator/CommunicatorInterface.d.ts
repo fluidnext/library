@@ -16,6 +16,7 @@ export interface CommunicatorInterface {
     onSend(callback: Function): void;
     /**
      * @param data
+     * @param {Function} data
      */
     send(data: Object): void;
     /**

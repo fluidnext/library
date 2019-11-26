@@ -1,6 +1,7 @@
 import { CommunicatorInterface } from "./CommunicatorInterface";
 import { CommunicatorAdapterInterface } from "./adapter/CommunicatorAdapterInterface";
 import { EventManagerInterface } from "../event";
+import { TransformInterface } from "../trasform/TransformInterface";
 /**
  * @class Communicator
  */
@@ -14,9 +15,14 @@ export declare class Communicator implements CommunicatorInterface {
      */
     protected eventManager: EventManagerInterface;
     /**
-     * @param adapter
+     * @type TransformInterface
      */
-    constructor(adapter: CommunicatorAdapterInterface);
+    protected transform: TransformInterface;
+    /**
+     * @param {CommunicatorAdapterInterface} adapter
+     * @param {TransformInterface} transform
+     */
+    constructor(adapter: CommunicatorAdapterInterface, transform?: TransformInterface);
     /**
      * @inheritDoc
      */

@@ -43,7 +43,7 @@ export declare class UdpCommunicatorAdapter implements CommunicatorAdapterInterf
     /**
      * @inheritDoc
      */
-    sendAdapter(data: any): void;
+    sendAdapter(data: any, callback: any): void;
     /**
      * @inheritDoc
      */

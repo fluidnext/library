@@ -48,7 +48,7 @@ export declare class SerialPortCommunicatorAdapter implements CommunicatorAdapte
      * @inheritDoc
      */
     onErrorAdapter(callback: any): void;
-    sendAdapter(data: any): void;
+    sendAdapter(data: any, callback: any): void;
     /**
      * @inheritDoc
      */

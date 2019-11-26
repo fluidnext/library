@@ -1,6 +1,7 @@
 import {CommunicatorInterface} from "./CommunicatorInterface";
 import {CommunicatorAdapterInterface} from "./adapter/CommunicatorAdapterInterface";
 import {EventManager, EventManagerInterface} from "../event";
+import {TransformInterface} from "../trasform/TransformInterface";
 /**
  * @class Communicator
  */
@@ -17,13 +18,21 @@ export class Communicator implements CommunicatorInterface {
     protected eventManager: EventManagerInterface;
 
     /**
-     * @param adapter
+     * @type TransformInterface
      */
-    constructor(adapter: CommunicatorAdapterInterface) {
+    protected transform: TransformInterface = null;
+
+    /**
+     * @param {CommunicatorAdapterInterface} adapter
+     * @param {TransformInterface} transform
+     */
+    constructor(adapter: CommunicatorAdapterInterface, transform: TransformInterface = null) {
 
         this.adapter = adapter;
 
         this.eventManager = new EventManager();
+
+        this.transform = transform
 ;    }
 
     /**
@@ -59,9 +68,7 @@ export class Communicator implements CommunicatorInterface {
      */
     send(data: any): void {
         this.eventManager.emit('send', data);
-        //TODO trasformer to get string???
-        let sendData = (typeof data === 'object') ? JSON.stringify(data) : data;
-        this.adapter.sendAdapter(sendData);
+        this.adapter.sendAdapter(this.transform ? this.transform.transform(data) : data);
     }
 
     /**

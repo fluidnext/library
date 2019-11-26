@@ -64,9 +64,9 @@ export class SerialPortCommunicatorAdapter {
     /*
      * @inheritDoc
      */
-    sendAdapter(data) {
+    sendAdapter(data, callback) {
         if (this._serialPort.isOpen) {
-            this._serialPort.write(data);
+            this._serialPort.write(data, callback ? callback : () => { });
         }
     }
     /**
